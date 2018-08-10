@@ -11,7 +11,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,16 +20,31 @@ import com.dtk.model.Client;
 
 
 
-@RestController
-public class AppController {
+@Controller
+public class WebController {
 	
-	@Autowired
-	ClientRepository clientRepo;
 	
- 
-    @PostMapping("/addClient")
-    public Client createQuestion(@Valid @RequestBody Client client) {
-        return clientRepo.save(client);
-    }
+   @RequestMapping("/")
+   public String index() {
+      return "index";
+   }
+
+   @PostMapping("/hello")
+   public String sayHello(@RequestParam("name") String name, Model model) {
+      model.addAttribute("name", name);
+      return "hello";
+   }
+   
+   @RequestMapping("/test")
+   public String sayTest() {
+	      return "test";
+   }
+   
+   @RequestMapping("/customerForm")
+   public String sayCustomer() {
+	      return "customer";
+   }
+   
+  
    
 }

@@ -31,7 +31,11 @@
 </div>    </div>
   </div>
 </div>
-
+<br>
+<div class="alert alert-success" role="alert">
+  Everyday is a good day!
+</div>
+<br>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

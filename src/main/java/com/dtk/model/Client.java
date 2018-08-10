@@ -1,29 +1,39 @@
 package com.dtk.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "customer")
-public class Customer implements Serializable {
+@Table(name = "client")
+public class Client implements Serializable {
 
 	private static final long serialVersionUID = -3009157732242241606L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	 @Id
+	    @GeneratedValue(generator = "answer_generator")
+	 	@SequenceGenerator(
+	        name = "answer_generator",
+	        sequenceName = "answer_sequence",
+	        initialValue = 1000
+	 	)
 	private long id;
 
-	@Column(name = "firstname")
+	@Column(name = "firstName")
 	private String firstName;
 
-	@Column(name = "lastname")
+	@Column(name = "lastName")
 	private String lastName;
 	
+    @NotBlank
 	@Column(name = "phone")
 	private String phone;
 	
@@ -31,7 +41,7 @@ public class Customer implements Serializable {
 	private String email;
 	
 	@Column(name = "birthday")
-	private String birthday;
+	private Date birthday;
 
 	public long getId() {
 		return id;
@@ -73,13 +83,24 @@ public class Customer implements Serializable {
 		this.email = email;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
+				+ ", email=" + email + ", birthday=" + birthday + "]";
+	}
+
+
+
+
+
 	
 
 
